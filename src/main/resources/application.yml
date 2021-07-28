@@ -1,0 +1,16 @@
+server:
+  port: 9999
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: LoadModule
+        uri: http://localhost:9111/
+        predicates:
+        - Path=/api/**
+      - id: DBService
+        uri: http://localhost:9945/
+        predicates:
+        - Path=/h2-api/**
+     
